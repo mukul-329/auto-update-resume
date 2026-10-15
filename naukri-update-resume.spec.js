@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 import { chromium } from "playwright";
 
 test("Update Naukri resume", async () => {
@@ -8,7 +8,6 @@ test("Update Naukri resume", async () => {
 
   try {
     const page = context.pages()[0];
-
     await page.goto("https://www.naukri.com/mnjuser/profile?id=&altresid");
 
     await page.getByRole("button", { name: "Update resume" }).click();
@@ -19,6 +18,8 @@ test("Update Naukri resume", async () => {
     await page
       .getByRole("button", { name: "Upload resume" })
       .setInputFiles(resumePath);
+
+    await page.waitForTimeout(3000);
 
     // Wait for the upload process to finish before closing.
     // Add a site-specific success assertion here if available.
