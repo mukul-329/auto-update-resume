@@ -72,16 +72,18 @@ It should open your Naukri profile. If it does, you're logged in. Now close the 
 
 ### 7. Update your resume
 
+Once you're logged in, you don't need to repeat the steps above. For all future updates, just run
+
 ```bash
 npm run update
 ```
 
 This uploads the file at `RESUME_PATH` to your Naukri profile.
 
-To keep the browser open for inspection after execution, pass the `--pause` flag:
+To keep the browser open for inspection after execution, run :
 
 ```bash
-npm run update -- --pause
+npm run update:pause
 ```
 
 ### 8. Verify the update
@@ -92,9 +94,9 @@ npm run verify-update
 
 The test confirms the resume was updated successfully.
 
-### 9. Subsequent updates
+### 9. Update and Verify together
 
-Once you're logged in, you don't need to repeat the steps above. For all future updates, just run:
+For convenience, if you want to update and double check if today's date is shown in Resume section, you can run:
 
 ```bash
 npm run update-and-verify
