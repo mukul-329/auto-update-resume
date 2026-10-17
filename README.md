@@ -78,6 +78,12 @@ npm run update
 
 This uploads the file at `RESUME_PATH` to your Naukri profile.
 
+To keep the browser open for inspection after execution, pass the `--pause` flag:
+
+```bash
+npm run update -- --pause
+```
+
 ### 8. Verify the update
 
 ```bash
