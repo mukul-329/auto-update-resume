@@ -35,7 +35,7 @@ NAUKRI_PROFILE_URL= naukri profile url
 
 | Variable             | Description                                         |
 | -------------------- | --------------------------------------------------- |
-| `RESUME_PATH`        | Absolute path to the resume file you want to upload |
+| `RESUME_PATH`        | Absolute path to the resume file you want to upload (without quotes and without spaces in the filename) |
 | `NAUKRI_PROFILE_URL` | URL of your Naukri profile page                     |
 
 ### 3. Install dependencies
