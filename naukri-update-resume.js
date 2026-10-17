@@ -9,15 +9,13 @@ const { chromium } = require("playwright");
   const resumePath = process.env.RESUME_PATH;
   const naukriProfileUrl = process.env.NAUKRI_PROFILE_URL;
 
+  let page;
   try {
-    const page = context.pages()[0];
+    page = context.pages()[0];
     await page.goto(naukriProfileUrl);
 
-    await page.getByRole("button", { name: "Update resume" }).click();
-
-    await page
-      .getByRole("button", { name: "Upload resume" })
-      .setInputFiles(resumePath);
+    const fileInput = page.locator("input#attachCV[type='file']");
+    await fileInput.setInputFiles(resumePath);
 
     const successMsgBox = page.locator("div.msgBox.success");
     await successMsgBox.waitFor({
