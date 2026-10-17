@@ -9,6 +9,7 @@
     "login": "node naukri-login.js",
     "verify-login": "node check-login.js",
     "update": "node naukri-update-resume.js",
+    "update:pause": "node naukri-update-resume.js --pause",
     "verify-update": "npx playwright test naukri-verify-resume.spec.js",
     "update-and-verify": "npm run update && npm run verify-update"
   },
