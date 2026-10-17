@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "playwright install chromium"
+    "postinstall": "playwright install chromium",
+    "login": "node naukri-login.js",
+    "verify-login": "node check-login.js",
+    "update": "node naukri-update-resume.js",
+    "verify-update": "npx playwright test naukri-verify-resume.spec.js",
+    "update-and-verify": "npm run update && npm run verify-update"
   },
   "keywords": [],
   "author": "",

@@ -44,28 +44,28 @@ NAUKRI_PROFILE_URL= naukri profile url
 npm install
 ```
 
+## Usage
+
 ### 4. Go to the project directory
 
 ```bash
 cd <project-directory>
 ```
 
-## Usage
-
 ### 5. Log in
 
 ```bash
-node naukri-login.js
+npm run login
 ```
 
-A browser window opens. **Log in manually** to your Naukri account. Your session details are saved in the local `naukri-profile/` folder.
+A browser window opens. **Log in manually** to your Naukri account. Your session details are saved in the local `naukri-profile/` folder. You can close the window now.
 
 > `naukri-profile/` is already in `.gitignore`, so you won't accidentally push your session to Git. Never commit or share this folder.
 
 ### 6. Verify the login
 
 ```bash
-node check-login.js
+npm run verify-login
 ```
 
 It should open your Naukri profile. If it does, you're logged in. Now close the window.
@@ -73,7 +73,7 @@ It should open your Naukri profile. If it does, you're logged in. Now close the 
 ### 7. Update your resume
 
 ```bash
-node naukri-update-resume.js
+npm run update
 ```
 
 This uploads the file at `RESUME_PATH` to your Naukri profile.
@@ -81,17 +81,27 @@ This uploads the file at `RESUME_PATH` to your Naukri profile.
 ### 8. Verify the update
 
 ```bash
-npx playwright test naukri-verify-resume.spec.js
+npm run verify-update
 ```
 
 The test confirms the resume was updated successfully.
 
+### 9. Subsequent updates
+
+Once you're logged in, you don't need to repeat the steps above. For all future updates, just run:
+
+```bash
+npm run update-and-verify
+```
+
+This updates your resume and then verifies it. If your session has expired, run `npm run login` again first.
+
 ## Troubleshooting
 
-| Problem                                      | Fix                                                              |
-| -------------------------------------------- | ---------------------------------------------------------------- |
-| `check-login.js` redirects to the login page | Session expired. Run `node naukri-login.js` again.               |
-| Resume file not found                        | Make sure `RESUME_PATH` is an absolute path and the file exists. |
+| Problem                                            | Fix                                                              |
+| -------------------------------------------------- | ---------------------------------------------------------------- |
+| `npm run verify-login` redirects to the login page | Session expired. Run `npm run login` again.                      |
+| Resume file not found                              | Make sure `RESUME_PATH` is an absolute path and the file exists. |
 
 ## Security notes
 
