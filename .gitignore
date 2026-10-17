@@ -1,2 +1,4 @@
 node_modules/
+.env
+# Naukri profile data containing login and session information
 naukri-profile/
