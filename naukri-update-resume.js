@@ -19,13 +19,12 @@ const { chromium } = require("playwright");
       .getByRole("button", { name: "Upload resume" })
       .setInputFiles(resumePath);
 
-    const waitSec = 3000;
-    console.log("file uploaded.");
-    console.log(`Waiting to upload for ${waitSec / 1000} sec`);
-    await page.waitForTimeout(waitSec);
-    console.log("Resume Updated successfully");
-    // Wait for the upload process to finish before closing.
-    // Add a site-specific success assertion here if available.
+    const successMsgBox = page.locator("div.msgBox.success");
+    await successMsgBox.waitFor({
+      state: "visible",
+      timeout: 10_000,
+    });
+    console.log("Resume Updated Successfully");
   } catch (err) {
     console.log("Something went wrong");
     throw err;
