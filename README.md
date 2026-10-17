@@ -80,7 +80,7 @@ npm run update
 
 This uploads the file at `RESUME_PATH` to your Naukri profile.
 
-To keep the browser open for inspection after execution, run :
+To keep the browser open for inspection after execution, run following instead:
 
 ```bash
 npm run update:pause
