@@ -5,9 +5,6 @@ const { chromium } = require("playwright");
     headless: false,
   });
 
-
-
-  
   const page = context.pages()[0];
 
   await page.goto("https://www.naukri.com/");
