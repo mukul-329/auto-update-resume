@@ -68,7 +68,7 @@ A browser window opens. **Log in manually** to your Naukri account. Your session
 node check-login.js
 ```
 
-It should open your Naukri profile and then close the window automatically. If it does, you're logged in.
+It should open your Naukri profile. If it does, you're logged in. Now close the window.
 
 ### 7. Update your resume
 
@@ -81,7 +81,7 @@ This uploads the file at `RESUME_PATH` to your Naukri profile.
 ### 8. Verify the update
 
 ```bash
-npx playwright test naukri-verify-resume.js
+npx playwright test naukri-verify-resume.spec.js
 ```
 
 The test confirms the resume was updated successfully.
