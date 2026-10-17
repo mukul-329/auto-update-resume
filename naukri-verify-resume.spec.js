@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { chromium } from "playwright";
 
-test("verify if naukri resume updated", async () => {
+test("upload date contains today's date", async () => {
   const context = await chromium.launchPersistentContext("./naukri-profile", {
     headless: false,
   });
