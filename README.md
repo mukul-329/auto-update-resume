@@ -1,0 +1,103 @@
+# Naukri.com Resume Updater
+
+Automatically refresh your [Naukri](https://www.naukri.com) resume with a script. It uses [Playwright](https://playwright.dev) to log in once (manually), save your session locally, and then re-upload your resume whenever you run it, so your profile stays fresh for recruiters.
+
+## Features
+
+- One-time manual login, with the session saved **locally**
+- One-command resume update
+- Playwright test to verify the update went through
+- Session data is gitignored, so you won't accidentally push credentials
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org) 18 or newer
+- A Naukri account
+- Your resume file (PDF/DOC/DOCX), supported by naukri.com, available locally
+
+## Setup
+
+### 1. Clone the repo
+
+```bash
+git clone <your-repo-url>
+cd <project-directory>
+```
+
+### 2. Configure environment variables
+
+Create a `.env` file in the project root and add:
+
+```env
+RESUME_PATH=/absolute/path/to/your/resume.pdf
+NAUKRI_PROFILE_URL= naukri profile url
+```
+
+| Variable             | Description                                         |
+| -------------------- | --------------------------------------------------- |
+| `RESUME_PATH`        | Absolute path to the resume file you want to upload |
+| `NAUKRI_PROFILE_URL` | URL of your Naukri profile page                     |
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Go to the project directory
+
+```bash
+cd <project-directory>
+```
+
+## Usage
+
+### 5. Log in
+
+```bash
+node naukri-login.js
+```
+
+A browser window opens. **Log in manually** to your Naukri account. Your session details are saved in the local `naukri-profile/` folder.
+
+> `naukri-profile/` is already in `.gitignore`, so you won't accidentally push your session to Git. Never commit or share this folder.
+
+### 6. Verify the login
+
+```bash
+node check-login.js
+```
+
+It should open your Naukri profile and then close the window automatically. If it does, you're logged in.
+
+### 7. Update your resume
+
+```bash
+node naukri-update-resume.js
+```
+
+This uploads the file at `RESUME_PATH` to your Naukri profile.
+
+### 8. Verify the update
+
+```bash
+npx playwright test naukri-verify-resume.js
+```
+
+The test confirms the resume was updated successfully.
+
+## Troubleshooting
+
+| Problem                                      | Fix                                                              |
+| -------------------------------------------- | ---------------------------------------------------------------- |
+| `check-login.js` redirects to the login page | Session expired. Run `node naukri-login.js` again.               |
+| Resume file not found                        | Make sure `RESUME_PATH` is an absolute path and the file exists. |
+
+## Security notes
+
+- Keep `.env` and `naukri-profile/` out of version control.
+- The saved session grants access to your Naukri account. Treat it like a password.
+
+## Disclaimer
+
+This project is for personal use and is not affiliated with Naukri / Info Edge. Automating a website may be restricted by its terms of service, so use it responsibly and at your own risk.
