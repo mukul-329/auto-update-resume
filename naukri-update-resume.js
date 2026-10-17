@@ -8,6 +8,7 @@ const { chromium } = require("playwright");
   });
   const resumePath = process.env.RESUME_PATH;
   const naukriProfileUrl = process.env.NAUKRI_PROFILE_URL;
+  const pauseAfterExecution = process.argv.includes("--pause");
 
   let page;
   try {
@@ -27,6 +28,9 @@ const { chromium } = require("playwright");
     console.log("Something went wrong");
     throw err;
   } finally {
+    if (pauseAfterExecution) {
+      await page.pause();
+    }
     await context.close();
   }
 })();
